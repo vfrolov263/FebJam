@@ -8,6 +8,15 @@ namespace FebJam
     /// </summary>
     public class GameplaySceneEntryPoint : MonoBehaviour
     {
+        [SerializeField]
+        private CharacterDialogue _dialogue;
+        [SerializeField]
+        private GameplayManager _gameplayManager;
+        [SerializeField]
+        private Papers _papers;
+        [SerializeField]
+        private ImagesData _imagesData;
+
         [SerializeField, Tooltip("Actions to execute for early initialize.")]
         private UnityEvent _initActions;
 
@@ -26,7 +35,7 @@ namespace FebJam
 
         private void InitScene()
         {
-
+            _gameplayManager.Init(_dialogue, _papers, _imagesData, ServiceLocator.GetService<AchievementsDatabase>());
         }
     }
 }
